@@ -1,0 +1,2 @@
+# ignore files with credential information
+*.creds 
