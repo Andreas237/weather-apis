@@ -8,6 +8,6 @@ package cassandraHost;
  * @purpose this interface defines methods available on the CassandraHost 
  * 			database connection
  */
-public interface CassandraRequests {
+public interface CassandraInterface {
 
 }// end public interface CassandraRequests

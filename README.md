@@ -6,3 +6,22 @@ This project aims to:
   - Use Apache Cassandra referring with a little [help](http://www.baeldung.com/cassandra-with-java)
   - Compare 5 day forecasts (stored in my DB) with the actuals
   - Use Apache Spark to gain insight
+
+
+
+
+/** TODO: DESIGN
+		create UML diagram for classes and interfaces
+	  		CassandraMain (class) - connects to DB, and tests connection, CRUD functions
+	  		CassandraInterface (interface) - lists functions available for CassandraMain functionality
+*/
+
+/** TODO: TESTING
+		Decide how to test the functionality decided in UML
+			CassandraMain_test (class) - tests CassandraMain
+*/
+
+/** TODO: DEV
+		TODO: Create classes according 
+
+*/
