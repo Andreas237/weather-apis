@@ -37,6 +37,39 @@
          <artifactId>netty</artifactId>
          <version>3.9.0.Final</version>
       </dependency>
+      
+    <dependency>
+  		<groupId>com.sparkjava</groupId>
+  		<artifactId>spark-core</artifactId>
+  		<version>2.7.2</version>
+  	</dependency>
+  	
+  	<dependency>
+    	<groupId>org.easymock</groupId>
+	    <artifactId>easymock</artifactId>
+    	<version>3.3.1</version>
+    	<scope>test</scope>
+  	</dependency>
+  	
+  	<dependency>
+    	<groupId>com.google.code.gson</groupId>
+    	<artifactId>gson</artifactId>
+    	<version>2.3.1</version>
+    	<scope>test</scope>
+  	</dependency>
+  	
+	<dependency>
+    	<groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>1.16.2</version>
+    	<scope>provided</scope>
+  	</dependency>  	
+
+	<dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+    	<artifactId>jackson-databind</artifactId>
+    	<version>2.5.1</version>
+  	</dependency>
     
   </dependencies>
 </project>

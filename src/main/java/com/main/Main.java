@@ -1,6 +1,7 @@
 package com.main;
 
-
+import cassandraHost.CassandraMain;
+import cassandraHost.CassandraMain.CassandraConnect;
 
 /**
  * 
@@ -25,6 +26,8 @@ public class Main {
 		setMainDbl( 1.1 ) ;
 		setMainInt( 1 ) ;
 		setMainStr( "mainStr" ) ;
+		
+		
 	}// end Main()
 	
 	
@@ -46,10 +49,12 @@ public class Main {
 	
 	
 	
-	/*public static void main(String[] args) {
-		Main f = new Main() ;
+	public static void main(String[] args) {
+		CassandraMain cass = new CassandraMain() ;
+		CassandraConnect cnxn = cass.new CassandraConnect() ;
+		System.out.println("Port: " + cnxn.getPort() );
 
-	}*/// end public static void main(String[] args)
+	}// end public static void main(String[] args)
 	
 	
 	

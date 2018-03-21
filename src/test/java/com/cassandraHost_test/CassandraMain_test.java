@@ -4,10 +4,13 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.datastax.driver.core.exceptions.NoHostAvailableException;
+
 import static org.junit.Assert.*;
 
 
 import cassandraHost.CassandraMain;
+import cassandraHost.CassandraMain.CassandraConnect;
 
 /**
  * 
@@ -16,7 +19,7 @@ import cassandraHost.CassandraMain;
  */
 public class CassandraMain_test {
 	
-	static CassandraMain tester ;
+	static CassandraConnect tester ;
 	 
 	
 	
@@ -36,8 +39,9 @@ public class CassandraMain_test {
 	// Port: port number in Docker container
 	@BeforeClass
 	public static void testSetup() {
+		CassandraMain x = null ;
 		
-		tester = new CassandraMain( "localhost", 32769 ) ;
+		tester = x.new CassandraConnect() ;
 		
 	}// end public static void testSetup()
 	
@@ -66,6 +70,55 @@ public class CassandraMain_test {
 	
 	
 	
+	// Check that we connected to the correct port and node
+	@Test
+	public void checkNodeAndPort_test() {
+		// alternate ports on docker
+		String testNode = "localhost" ;
+		Integer testPort = 32768 ;
+		// even if we can't connect we want to check that the node and port were set
+		// by the private methods
+		try{
+			CassandraMain x = null ;
+			tester = x.new CassandraConnect( testNode, testPort ) ;
+		}
+		catch( NoHostAvailableException e){
+			System.out.println("Caught 'NoHostAvailableException' in checkNodeAndPort_test()");
+			System.out.println("No need to panic, we're checking private methods.");
+		}// end catch
+		assertSame( tester.getNode() , testNode ) ;
+		assertEquals( tester.getPort(), testPort ) ;
+	}// end public void checkNodeAndPort_test()
+	
+	
+	
+	
+	// Check that we connected to the correct port and node
+	@Test
+	public void checkNodeAndPortAndName_test() {
+		// alternate ports on docker
+		String testClusterName = "TEST_CLUSTER_NAME" ;
+		String testNode = "localhost" ;
+		Integer testPort = 32768 ; // another docker port
+		// even if we can't connect we want to check that the node and port were set
+		// by the private methods
+		try{
+			CassandraMain x = null ;
+			tester = x.new CassandraConnect( testNode, testPort, testClusterName ) ;
+		}
+		catch( NoHostAvailableException e){
+			System.out.println("Caught 'NoHostAvailableException' in checkNodeAndPortAndName_test()");
+			System.out.println("No need to panic, we're checking private methods.");
+		}// end catch
+		
+		assertSame( tester.getNode() , testNode ) ;
+		assertEquals( tester.getPort(), testPort ) ;
+		assertSame( tester.getClusterName(), testClusterName ) ;
+	}// end public void checkNodeAndPort_test()
+	
+	
+	
+	
 	// Test that neither the cluster or session are null
 	// after the CassandraConnector constructor is called
 	@Test
@@ -88,7 +141,7 @@ public class CassandraMain_test {
 	
 	
 	/**
-	 * description Test that the fields are added to the map:
+	 * @description Test that the fields are added to the map:
 	 * 				1 is the field list empty?
 	 * 				2 do we have the required fields 
 	 */
@@ -106,6 +159,12 @@ public class CassandraMain_test {
 	
 	
 	// Test that we can create a table
+	// TODO: create a KEYSPACE DB_TEST (equivalent to a DB
+	// TODO: create a table TB_TEST in TEST
+	// TODO: create some data in TB_TEST
+	/**
+	 * @description test that a keyspace can be created
+	 */
 	
 	
 
